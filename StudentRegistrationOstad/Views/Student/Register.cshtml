@@ -1,0 +1,44 @@
+﻿@model StudentRegistrationOstad.Models.Student
+@{
+    ViewData["Title"] = "Register Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">🎓 Student Registration</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form asp-action="Register" method="post" class="mt-4">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" placeholder="Full Name" />
+        <span asp-validation-for="Name" class="text-danger small"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" placeholder="Email Address" />
+        <span asp-validation-for="Email" class="text-danger small"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Age" class="form-label"></label>
+        <input asp-for="Age" class="form-control" type="number" min="16" max="65" />
+        <span asp-validation-for="Age" class="text-danger small"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Course" class="form-label"></label>
+        <input asp-for="Course" class="form-control" placeholder="Enter Course" />
+        <span asp-validation-for="Course" class="text-danger small"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Register 🚀</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

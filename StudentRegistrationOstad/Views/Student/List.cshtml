@@ -1,0 +1,43 @@
+﻿@model IEnumerable<StudentRegistrationOstad.Models.Student>
+@{
+    ViewData["Title"] = "Student List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">📋 Registered Students</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+@if (!Model.Any())
+{
+    <p class="text-muted">No students registered yet.</p>
+}
+else
+{
+    <table class="table table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Email</td>
+                    <td>@student.Age</td>
+                    <td>@student.Course</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
